@@ -1,0 +1,92 @@
+* {
+    font-family: -apple-system, sans-serif;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.window{
+    width: 200px;
+    height: 200px;
+    background-color: #d0d0d0;
+    position: fixed;
+}
+
+.head {
+    background-color: #333333;
+    padding: 4px 30px 4px 10px;
+    position: relative;
+    user-select: none;
+}
+.head:hover {
+    cursor: move;
+}
+.head > div:first-child {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: white;
+}
+
+.minimize {
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    right: 30px;
+    top: 50%;
+    transform: translateY(-10%);
+
+}
+.minimize::after{
+    position: absolute;
+    content: "";
+    background-color: white;
+    width: 2px;
+    height: 80%;
+    left: 50%;
+    transform: translateX(-50%) rotateZ(-90deg);
+
+}
+.minimize:hover{
+     cursor: pointer;
+}
+.minimize:hover::after {
+    background-color: red;
+}
+
+.close {
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.close::before,
+.close::after {
+    content: "";
+    background-color: white;
+    position: absolute;
+    border-radius: 3px;
+    width: 2px;
+    height: 100%;
+    left: 50%;
+    transform: translateX(-50%) rotateZ(-45deg);
+}
+.close::after {
+    transform: translateX(-50%) rotateZ(45deg);
+}
+.close:hover {
+    cursor: pointer;
+}
+.close:hover::before,
+.close:hover::after {
+    background-color: red;
+}
+.head[data-is-move="true"]::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
